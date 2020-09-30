@@ -1,0 +1,109 @@
+var mongoose=require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
+var mongooseAggregatePaginate = require('mongoose-aggregate-paginate');
+var Schema = mongoose.Schema;
+var rewardsFacilityLogSchema=new Schema({
+    _id:
+        {
+            type:String,
+            required:true
+        },
+    rewardsFacilityname:
+        {
+            type:String,
+            required:false
+        },
+    rewardsFacilityType:
+        {
+             type:String,
+             required:false
+        },
+    userId:
+        {
+            type:String,
+            required:false
+        },
+    restaurant_id:
+        {
+            type:String,
+            required:false
+        },
+    discount:
+        {
+            type:Number,
+            required:false,
+            default:'0'
+        },
+    clover:
+        {
+            type:Number,
+            required:false,
+            default:'0'
+        }, 
+    noOfDays:
+        {
+            type:Number,
+            required:false,
+            default:'0'
+        },
+    additionalAmount:
+        {
+            type:Number,
+            required:false,
+            default:'0'
+        },            
+    orderProvided:
+        {
+        type:Number,
+        required:false,
+        default:'0'
+        },
+    orderDependsOn:
+        {
+        type:Number,
+        required:false,
+        default:'0'
+        },
+    timeLimitation:
+        {
+        type:Number,
+        required:false,
+        default:'0'
+        },
+    notificationDateOn:
+        {
+        type:Number,
+        required:false,
+        default:'0'
+        },
+    maxCloverPoint:
+        {
+            type:Number,
+            required:false,
+            default:'0'
+        },   
+    amountRedeemed:
+        {
+            type:Number,
+            required:false,
+            default:'0'
+        }, 
+    cartAmountRedeemed:
+        {
+            type:Number,
+            required:false,
+            default:'0'
+        },            
+    enable:
+        {
+            type:String,
+            enum:['yes','no'],
+            default:'yes'
+        }
+},{
+        timestamps:true
+})
+rewardsFacilityLogSchema.plugin(mongoosePaginate);
+rewardsFacilityLogSchema.plugin(mongooseAggregatePaginate);
+module.exports=mongoose.model('RewardsFacilityLog',rewardsFacilityLogSchema);
+
